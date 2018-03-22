@@ -16,24 +16,24 @@ License: https://themeforest.net/licenses/standard
 
 	//	Backgrounds
 	function init_ED_AnimatedGradientBackground() {
-		
+
 		// Animated Gradient Background
 		if($('#animated-gradient').length){
-			animatedGradient();	
+			animatedGradient();
 		}
-		
+
 	}
-	
+
 	// Animated Gradient
 	function animatedGradient() {
 		var colors = new Array(
-			[62,35,255],
-			[45,175,230],
-			[62,35,255],
-			[255,128,0]);
+			[187,16,24],
+			[95,138,154],
+			[187,16,24],
+			[0,0,0]);
 
 		var step = 0;
-		//color table indices for: 
+		//color table indices for:
 		// current color left
 		// next color left
 		// current color right
@@ -44,9 +44,9 @@ License: https://themeforest.net/licenses/standard
 		var gradientSpeed = 0.002;
 
 		function updateGradient() {
-		  
+
 			if ( $===undefined ) return;
-		  
+
 			var c0_0 = colors[colorIndices[0]];
 			var c0_1 = colors[colorIndices[1]];
 			var c1_0 = colors[colorIndices[2]];
@@ -66,13 +66,13 @@ License: https://themeforest.net/licenses/standard
 			$('#animated-gradient')
 				.css({background: "-webkit-gradient(linear, left top, right top, from("+color1+"), to("+color2+"))"})
 				.css({background: "-moz-linear-gradient(left, "+color1+" 0%, "+color2+" 100%)"});
-			  
+
 			step += gradientSpeed;
 			if ( step >= 1 ) {
 				step %= 1;
 				colorIndices[0] = colorIndices[1];
 				colorIndices[2] = colorIndices[3];
-				
+
 				//pick two new target color indices
 				//do not pick the same as the current one
 				colorIndices[1] = ( colorIndices[1] + Math.floor( 1 + Math.random() * (colors.length - 1))) % colors.length;
@@ -81,7 +81,7 @@ License: https://themeforest.net/licenses/standard
 		}
 		setInterval(updateGradient,10);
 	}
-	
+
 	// document.ready function
 	jQuery(document).ready(function($) {
 		init_ED_AnimatedGradientBackground();
